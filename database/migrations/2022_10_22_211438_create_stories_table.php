@@ -21,7 +21,7 @@ return new class extends Migration
             $table->text('content');
             $table->dateTime('publish_date');
             $table->enum('status', ['Active', 'Inactive','Archived'])->default('Inactive');
-            $table->string('image');
+            $table->string('image')->nullable();
             $table->timestamps();
         });
     }
