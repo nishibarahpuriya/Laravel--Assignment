@@ -79,6 +79,7 @@ class AuthController extends Controller
         ]);
         $data = $request->all();
         $data['password']= Hash::make($request->password);
+        $data['last_login'] =date('Y-m-d H:i:s');
         $check = User::create($data);
          
         return redirect("dashboard")->withSuccess('Great! You have Successfully loggedin');
