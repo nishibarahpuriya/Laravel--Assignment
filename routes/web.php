@@ -21,7 +21,7 @@ Route::get('login', [AuthController::class, 'index'])->name('login');
 Route::post('post-login', [AuthController::class, 'postLogin'])->name('login.post'); 
 Route::get('registration', [AuthController::class, 'registration'])->name('register');
 Route::post('post-registration', [AuthController::class, 'postRegistration'])->name('register.post'); 
-Route::get('books',[BookController::class, 'list'])->name('list.books');
+Route::get('/',[BookController::class, 'list'])->name('list.books');
 Route::get('view-book/{id}',[BookController::class,'view'])->name('books.view');
 
 Route::group(['middleware' => ['auth']], function () {
