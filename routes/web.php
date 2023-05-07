@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
   
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\StoryController;
+use App\Http\Controllers\BookController;
   
 /*
 |--------------------------------------------------------------------------
@@ -16,23 +16,24 @@ use App\Http\Controllers\StoryController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-  
-Route::group(['middleware' => ['guest']], function () {
+
 Route::get('login', [AuthController::class, 'index'])->name('login');
 Route::post('post-login', [AuthController::class, 'postLogin'])->name('login.post'); 
 Route::get('registration', [AuthController::class, 'registration'])->name('register');
 Route::post('post-registration', [AuthController::class, 'postRegistration'])->name('register.post'); 
-});
+Route::get('books',[BookController::class, 'list'])->name('list.books');
+Route::get('view-book/{id}',[BookController::class,'view'])->name('books.view');
 
 Route::group(['middleware' => ['auth']], function () {
     Route::get('dashboard', [AuthController::class, 'dashboard'])->name('dashboard'); 
     Route::get('users', [UserController::class, 'userList'])->name('users');
-    Route::get('create-stories',[StoryController::class, 'create'])->name('create.stories');
-    Route::get('edit-stories/{slug}',[StoryController::class,'edit'])->name('stories.edit');
-    Route::get('delete-stories/{id}',[StoryController::class,'destory'])->name('stories.delete');
-    Route::get('view-story/{username}/{slug}',[StoryController::class,'view'])->name('stories.view');
-    Route::post('update-stories/{slug}',[StoryController::class,'update'])->name('story.update');
-    Route::get('list-stories',[StoryController::class, 'list'])->name('list.stories');
-    Route::post('store-stories',[StoryController::class, 'store'])->name('story.store');
+    Route::get('create-books',[BookController::class, 'create'])->name('create.books');
+    Route::get('edit-stories/{slug}',[BookController::class,'edit'])->name('stories.edit');
+    Route::get('delete-stories/{id}',[BookController::class,'destory'])->name('stories.delete');
+    // Route::get('view-book/{id}',[BookController::class,'view'])->name('books.view');
+    Route::post('update-stories/{slug}',[BookController::class,'update'])->name('story.update');
+    // Route::get('books',[BookController::class, 'list'])->name('list.books');
+    Route::post('store-stories',[BookController::class, 'store'])->name('story.store');
+    Route::post('review-add',[BookController::class, 'reviewAdd'])->name('review-add');
     Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 });

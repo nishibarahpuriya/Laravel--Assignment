@@ -13,16 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('stories', function (Blueprint $table) {
+        Schema::create('books', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
+            $table->integer('category_id');
             $table->string('title');
-            $table->string('slug');
-            $table->text('content');
-            $table->dateTime('publish_date');
-            $table->enum('status', ['Active', 'Inactive','Archived'])->default('Inactive');
-            $table->string('image')->nullable();
+            $table->text('description');
+            $table->integer('price');
+           
             $table->timestamps();
+           
         });
     }
 

@@ -1,0 +1,1 @@
+<?php /**PATH D:\xampp\htdocs\Laravel-Assignment\resources\views/layout/footer.blade.php ENDPATH**/ ?>

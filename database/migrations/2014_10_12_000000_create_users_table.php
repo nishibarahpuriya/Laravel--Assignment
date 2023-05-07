@@ -21,7 +21,11 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->boolean('status')->default(true);
-            $table->dateTime('doj');
+            $table->dateTime('doj')->nullable();
+            $table->string('phone')->nullable();
+            $table->text('description')->nullable();
+            $table->string('image')->nullable();
+            $table->enum('user_type', ['Admin', 'User'])->default('User');
             $table->dateTime('last_login')->nullable();
             $table->rememberToken();
             $table->timestamps();
